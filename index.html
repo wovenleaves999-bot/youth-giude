@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生存法则：AI、复利与写作</title>
+    
+    <!-- ============================================== -->
+    <!--              微信/社交分享卡片配置              -->
+    <!-- ============================================== -->
+    <meta property="og:title" content="生存法则：AI、复利与写作">
+    <meta property="og:description" content="世界翻涌得很快，但一个青年依然能清醒、温柔、生长。这不仅是道理，也是陪你向阳而生，走一段路的东西">
+    <!-- 下面这个链接等你部署好之后，一定要回来改成你的真实链接！否则卡片没图 -->
+    <meta property="og:image" content="https://<你的GitHub用户名>.github.io/youth-guide/icon.jpg">
+    <meta property="og:type" content="article">
+    
+    <meta name="description" content="世界翻涌得很快，但一个青年依然能清醒、温柔、生长。这不仅是道理，也是陪你向阳而生，走一段路的东西">
+    <link rel="icon" href="icon.jpg" type="image/jpeg">
+    <!-- ============================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --accent-color: #d4af37;
+            --warning-color: #ff6b6b;
+            --line-height: 1.8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+            line-height: var(--line-height);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 100px;
+        }
+
+        .container { max-width: 750px; margin: 0 auto; padding: 100px 24px 50px; }
+
+        header { text-align: center; margin-bottom: 120px; opacity: 0; animation: fadeInUp 1.5s ease forwards; }
+
+        h1 {
+            font-size: 2.8rem; margin-bottom: 24px; letter-spacing: 2px; font-weight: 700;
+            background: linear-gradient(45deg, #fff, #d4af37);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle { font-size: 1.1rem; color: var(--text-muted); font-weight: 300; letter-spacing: 1px; line-height: 1.6; }
+
+        .section {
+            margin-bottom: 120px; opacity: 0; transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); position: relative;
+        }
+        .section.visible { opacity: 1; transform: translateY(0); }
+
+        .section-num {
+            font-family: 'Times New Roman', serif; font-size: 5rem;
+            color: rgba(255, 255, 255, 0.04); position: absolute;
+            top: -40px; left: -20px; z-index: -1; font-style: italic;
+        }
+
+        h2 {
+            font-size: 1.8rem; color: var(--accent-color); margin-bottom: 12px;
+            display: inline-block; border-bottom: 2px solid rgba(212, 175, 55, 0.3); padding-bottom: 5px;
+        }
+
+        .chapter-quote { display: block; margin-bottom: 30px; font-style: italic; color: var(--text-muted); font-size: 0.95rem; }
+
+        p { margin-bottom: 24px; font-size: 1.1rem; text-align: justify; }
+        strong { color: #fff; font-weight: 700; }
+        .highlight { color: var(--accent-color); }
+
+        /* 重点段落的高亮样式 */
+        .highlight-block {
+            border-left: 3px solid var(--accent-color); padding: 20px 24px;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.05) 0%, rgba(0,0,0,0) 100%);
+            margin: 30px 0; color: #f0f0f0; font-weight: 500;
+        }
+
+        /* 句子内强调高亮 */
+        .highlight-text {
+            color: var(--accent-color); font-weight: 700;
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.4); padding-bottom: 2px;
+        }
+
+        /* 金句样式 */
+        .golden-quote {
+            font-size: 1.4rem; color: var(--accent-color); text-align: center; margin: 50px 0;
+            font-weight: 700; position: relative; padding: 10px 0; letter-spacing: 1px;
+        }
+        .golden-quote::before, .golden-quote::after {
+            content: "✦"; font-size: 0.8rem; color: rgba(212, 175, 55, 0.4); display: block; margin: 10px 0;
+        }
+
+        .alert-box {
+            background: rgba(255, 107, 107, 0.08); border-left: 3px solid var(--warning-color);
+            padding: 24px; margin: 36px 0; border-radius: 0 8px 8px 0;
+        }
+        .alert-text { color: var(--warning-color); font-weight: bold; font-size: 1.15rem; display: block; margin-bottom: 10px; }
+
+        ul { list-style: none; margin-bottom: 24px; }
+        li { margin-bottom: 20px; position: relative; padding-left: 24px; }
+        li::before { content: "•"; color: var(--accent-color); position: absolute; left: 0; font-size: 1.2rem; line-height: 1.8; }
+
+        .transition-block {
+            text-align: center; margin: 100px 0; padding: 60px 20px;
+            border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 70%);
+        }
+
+        .final-summary { margin-top: 150px; padding-top: 50px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .final-summary h2 { font-size: 2rem; border-bottom: none; margin-bottom: 40px; letter-spacing: 4px; }
+        .final-summary p { text-align: center; font-size: 1.1rem; color: var(--text-muted); }
+        .final-strong { color: var(--text-main); font-size: 1.2rem; margin-top: 30px; display: block; line-height: 2; }
+
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; } .container { padding-top: 60px; }
+            .section { margin-bottom: 80px; } .section-num { font-size: 4rem; top: -30px; }
+            .golden-quote { font-size: 1.2rem; } .final-summary { margin-top: 100px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>当前时代，青年须知</h1>
+            <p class="subtitle"> 必须使用 AI，学会复利，不要对知识失望，不要对善意灰心，去写作，降低不确定性<br>——让生命力尽情绽放</p>
+        </header>
+
+        <!-- 1. 去用 AI -->
+        <div class="section">
+            <div class="section-num">01</div>
+            <h2>去用 AI</h2>
+            <span class="chapter-quote">——这是关于“生存资格”的历史博弈</span>
+            <p>人类世界的进化史，本质上就是两条主线的进化：<strong>能量利用效率</strong>与<strong>信息传递效率</strong>。</p>
+            <p>从木头到蒸汽机再到内燃机，是能量的跃迁；从农业剩余（地主）到商业剩余（商人），再到今天的注意力剩余（短视频），以及当下的信息剩余（AI 革命）每一次跃迁都伴随着旧阶层的淘汰和新红利的诞生。<strong>AI，就是当今时代的信息剩余的集大成者。</strong></p>
+            <p>我们为什么要用 AI？因为历史的教训太过惨痛。</p>
+            <p>回望 1840 年，那时的清朝 GDP 世界第一，但科技落后，能量与信息的效率被西方资本主义降维打击。最形象的例子是甲午战败，中国给日本赔款 2 亿两白银。这笔钱让日本完成了工业化，而对我们意味着什么？换算成现在，相当于全中国每个人要赔 <strong>30,000 人民币</strong>给日本。比你小时候做的那个“每人给我一块钱”的梦还要多得多！这就是错过时代变革的代价。</p>
+            <p>现在，AI 变革的临界点来了，它就像当年的坚船利炮。虽然 AI 会淘汰很多纯粹做“生产”的人，把人赶去做服务和文化，但幸运的是，我们提早就知道了这场变革。</p>
+            <ul>
+                <li><strong>对抗熵增</strong>：把信息通过 AI 进行确定性和结构化，就能看到本质，释放冗余。这也是一种极致的熵减。这会让我们更有生命力的。</li>
+                <li><strong>鼓励探索</strong>：在 AI 时代，犯错是探索的必经之路。不要怕错，<span class="highlight">“惟以改过为能，不以无过为贵”</span>。古人都知道，只有在不断的试错和改过中，文明才能生存。利用 AI 去高频试错，去探索边界，这是最大的红利之一。要在“知行合一”中跳出舒适圈。</li>
+            </ul>
+        </div>
+
+        <!-- 过渡 -->
+        <div class="transition-block section">
+            <p style="text-align: center; margin-bottom: 20px;">今天的人类，一定要知道自己不知道。我再次强调：知道自己不知道，这很重要。</p>
+            <p style="text-align: center; color: var(--accent-color);">这是一个奖励提问的时代。利用 AI，做一个清醒的人——意味着你做的每一个选择，你都要能底气十足地说：“这是我选的”。</p>
+        </div>
+
+        <!-- 2. 复利 -->
+        <div class="section">
+            <div class="section-num">02</div>
+            <h2>复利</h2>
+            <span class="chapter-quote">——让时间成为你的盟友，而不是敌人</span>
+            <ul>
+                <li><strong>打工不是复利</strong>：打工是线性的，手停口停。如果你背上沉重的负债（如过高的房贷），你一定勤勤恳恳的，不敢丢你的工作，生活中不允许出现一点变故，否则就会崩溃。这种状态下，你根本没有时间去思考资产，更别提复利。你就锁死了。</li>
+                <li><strong>资产 > 支出</strong>：复利的终极目标是解放。当你的资产收益大于支出时，你不用为了生存工作了，你就拥有了大量的时间。把它交给复利的思考，你会越来越有钱。幂律分布就是如此。</li>
+            </ul>
+            <div class="highlight-block">
+                <strong>嵌入生命：</strong><br>
+                你需要把知识的复利嵌入到不假思索的每一分钟里，不仅仅是获得它的那一刻。对知识的尊敬，是持续的使用——这也是你们必须去写作的原因。写作无比重要。把剩余转化为资产，去复利。
+            </div>
+        </div>
+
+        <!-- 3. 不要对知识失望 -->
+        <div class="section">
+            <div class="section-num">03</div>
+            <h2>不要对知识失望</h2>
+            <span class="chapter-quote">——这是你中断“底层锁死”的唯一钥匙</span>
+            <p>互联网让国家变得透明，有利于长治久安；但对于个体，互联网充斥着海量的噪音。这些噪音不仅不会降低你对世界的不确定性，反而会形成可怕的<strong>“注意力锁死”</strong>。</p>
+            <p>你以为你在放松，其实你在被收割。你把注意力投给平台，把短视频刷到想吐，大脑失去了做出判断的能力，你怎么会有智慧？</p>
+            <div class="alert-box">
+                <span class="alert-text">说得难听点，那是短视频在喂你吃屎，而你吃的真烂。</span>
+                <p>这种“不降低不确定性的”东西抢占了你大脑判断的注意力，年轻人在这种高频的感官刺激中，直接被锁死了。</p>
+            </div>
+            <p><strong>为什么要尊重知识？</strong></p>
+            <p>因为只有知识能提供确定性，只有深度思考能中断这种锁死。人的改变需要大脑做出判断。还有，要给你的判断给到注意力，别让它们被注意力锁死。</p>
+            <p class="highlight" style="font-size: 1.2rem; text-align: center; margin: 40px 0;"><strong>“不要对知识失望，绝对不要。”</strong></p>
+            <p>在 AI 时代，如果你不尊重知识，只沉溺于奶头乐，必死无疑。死的透透的。绝对不要对知识失望，它是你重建认知秩序的唯一工具。你要用你的大脑去把控 AI，把“剩余”变成资产，而不是让自己沦为算法的奴隶。除去冗余，对抗熵增，降低不确定性，让生命力勃发。所以，不要被锁死，要尊重知识。</p>
+        </div>
+
+        <!-- 4. 不要对善意灰心 -->
+        <div class="section">
+            <div class="section-num">04</div>
+            <h2>不要对善意灰心</h2>
+            <span class="chapter-quote">——善意是最高级的生存策略</span>
+            <p>以及为什么要做好人，做善良的人？这会给别人确定性，他帮了你，你就会回馈他。人是利己的，提供稳定的预期，让人相信，让你就是在帮自己。把你的信用作为抵押，让别人愿意帮你，你再回报他。</p>
+            <p class="highlight" style="font-size: 1.2rem; text-align: center; margin: 40px 0;"><strong>“不要对善意灰心，绝对不要。”</strong></p>
+            <p>弱者怎么被大佬看见？唯一的路径就是通过高频刷存在感，去解决大佬关心的问题。给反馈，最好给点惊喜，这很重要。以及，做个善良的人。</p>
+        </div>
+
+        <!-- 5. 写作 -->
+        <div class="section">
+            <div class="section-num">05</div>
+            <h2>写作</h2>
+            <span class="chapter-quote">——思维的强化与资产化</span>
+            <p>把这一点单独列出来，是因为它太重要了。<strong>IP 可以不做，但一定要写作。</strong></p>
+            <div class="golden-quote">
+                “ 写作的核心不在于文采，<br>而在于把好的东西重复强调。”
+            </div>
+            <ul>
+                <li><strong>思考的深度</strong>：媒介不同。语言表达总是连贯的，看视频的人也往往很少拖动进度条，而写作/看书，天然就具有停下来想一想的功效，让你知道自己在干嘛，把内容结构化，更加有确定性。</li>
+                <li><strong>以及资产化</strong>：写作是将你的经验、思考沉淀为“资产”的过程。每一篇经过深度思考的文章，都是你在这个世界留下的数字资产，也是复利的起点。</li>
+            </ul>
+        </div>
+
+        <!-- 6. 止于至善 -->
+        <div class="section">
+            <div class="section-num">06</div>
+            <h2>止于至善</h2>
+            <span class="chapter-quote">——时刻保持清醒的觉知</span>
+            <p>《大学》之道，在明明德，在止于至善。这是一种终极的追求，也是一种清醒的自我认知。这很美好。</p>
+            <p>看似简单的一句话，却可以应用在万事万物——学习的时候，看书的时候，谈恋爱的时候，工作的时候，或者是其他任何地方，你都可以用止于至善来解释。如同“消费、投资、负债”和“一体两面”，都可以用来解释任何内容。</p>
+            <div class="highlight-block">
+                但最重要的是，你要把他们完全复利，在你能用到的任何时候不假思索的利用这些知识，让你变得美好。把这些知识变成复利，这很重要。
+            </div>
+        </div>
+
+        <!-- 7. 降低不确定性 -->
+        <div class="section">
+            <div class="section-num">07</div>
+            <h2>降低不确定性</h2>
+            <span class="chapter-quote">——生活中的熵减与秩序</span>
+            <p>我们所有的努力——用 AI、学知识——归根结底都是为了降低不确定性。<br>生活需要结构化，需要熵减。</p>
+            <ul>
+                <li><strong>生活熵减</strong>：这种确定性甚至体现在最微小的细节里。衣服勤换，内裤每天换，天天洗澡，保持香香的。不要小看这些细节。很多男性一进门闻起来是臭的，这不仅仅是卫生问题，这是生活失控、熵增混乱的表现。</li>
+                <li><strong>结构化</strong>：只有当你的生活、财务、形象都处于有序的“低熵”状态时，你才有余力去应对外部世界的挑战。</li>
+            </ul>
+            <p>所有价值内容，需要用这点去诠释。好的东西，会让你降低不确定性；相对应的，没有降低不确定性的东西你就该警惕了。以及再次强调：知道这些内容没用，<span class="highlight-text">让“降低不确定性”深刻融入你的生活形成复利</span>，这才有用。</p>
+        </div>
+
+        <!-- 总结 -->
+        <div class="section final-summary">
+            <h2>总结</h2>
+            <p>时代已经给了我们所有人一把杀伐果断的剑——<span class="highlight">AI</span>；</p>
+            <p>一条通向自由的路——<span class="highlight">复利</span>；一盏照亮混沌的灯——<span class="highlight">知识</span>；</p>
+            <p>一个必备基础——<span class="highlight">降低不确定性</span>；以及一个最需要的系统——<span class="highlight">写作</span>；</p>
+            <br>
+            <p>也许你现在还不是最强的，但你完全可以是最清醒的。</p>
+            <p>你只需要永远不放弃增长、不断增加确定性。</p>
+            <div class="final-strong">
+                在这个时代，只要你愿意把自己结构化，<br>
+                把善意坚持，把行动落地，知行合一，<br>
+                你就已经在超过 99.9% 的人。<br><br>
+                <span class="highlight" style="font-size: 1.5rem;">未来的门永远向你打开着。</span>
+            </div>
+        </div>
+
+        <footer style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: 100px;">
+            <p>知行合一 · 止于至善</p>
+        </footer>
+    </div>
+
+    <script>
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.section').forEach(section => { observer.observe(section); });
+    </script>
+</body>
+</html>
